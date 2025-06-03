@@ -2,7 +2,7 @@
 
 `profile-hound` is a modular Python-based CLI OSINT tool that scans for usernames, phone numbers, and emails across social media, dating sites, public directories, and breach databases. It provides automatic link extraction from search engines and supports snapshot profiling.
 
-Built by [socalit](https://github.com/socalit) for ethical recon, hotel auditing, and cyber investigations.
+Built by [socalit](https://github.com/socalit) for ethical recon, auditing, and cyber investigations.
 
 ---
 
