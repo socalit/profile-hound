@@ -31,3 +31,8 @@ def run_username_scan(username):
             results[site] = {"url": url, "error": "timeout or blocked"}
 
     return results
+from modules.utils import search_google
+
+google_html = search_google(f"site:linkedin.com/in {username}")
+
+
