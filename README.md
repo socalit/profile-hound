@@ -6,7 +6,7 @@ Built by [socalit](https://github.com/socalit) for ethical recon, cybersecurity 
 
 ---
 
-## 🔍 Features
+## Features
 
 - Username scanner across major platforms (Twitter, GitHub, Reddit, etc.)
 - Email breach detection via HaveIBeenPwned API
