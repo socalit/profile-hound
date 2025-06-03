@@ -1,97 +1,88 @@
 # profile-hound
 
-`profile-hound` is a modular Python-based CLI OSINT tool for investigating usernames, phone numbers, and email addresses across the internet. It can scan social media, check breach data, validate phone numbers, and (optionally) extract profile metadata using browser automation.
+`profile-hound` is a modular Python-based CLI OSINT tool that scans for usernames, phone numbers, and emails across social media, dating sites, public directories, and breach databases. It provides automatic link extraction from search engines and supports snapshot profiling.
 
-Built by [socalit](https://github.com/socalit) for ethical recon, cybersecurity auditing, and digital footprint analysis.
+Built by [socalit](https://github.com/socalit) for ethical recon, hotel auditing, and cyber investigations.
 
 ---
 
 ## Features
 
-- Username scanner across major platforms (Twitter, GitHub, Reddit, etc.)
-- Email breach detection via HaveIBeenPwned API
-- Phone metadata extraction using Numverify API
-- Address/DOB/Relatives enrichment placeholder
-- Optional: dynamic web scraping with Selenium or Playwright
-- Multi-threaded
-- Outputs to structured JSON
-
----
-
-## Usage
-
-```bash
-# Basic username scan
-python3 profile_hound.py --username johndoe
-
-# Email breach check
-python3 profile_hound.py --email user@example.com
-
-# Phone lookup
-python3 profile_hound.py --phone +15551234567
-
-# Full profile (runs all checks)
-python3 profile_hound.py --username johndoe --email user@example.com --phone +15551234567 --all
-```
+-  Checks username presence on 15+ platforms (social, music, adult, gaming)
+-  Fallback search using Google for LinkedIn, Facebook, etc.
+-  Email breach checks via HaveIBeenPwned
+-  Phone validation + carrier/location via Numverify
+-  Stub: Full name, DOB, address & relatives enrichment
+-  `--output pretty` prints clean profile summary to terminal
+-  JSON export to `results/` folder
 
 ---
 
 ## Installation
 
 ```bash
-# Clone the repo
 git clone https://github.com/socalit/profile-hound.git
 cd profile-hound
-
-# Run the installer
 chmod +x install-profile-hound.sh
 ./install-profile-hound.sh
 ```
 
-During install, you'll be prompted to enable optional browser support (Selenium & Playwright).
+You’ll be prompted to install headless browser tools if desired (Playwright/Selenium).
+
+---
+
+## Example Usage
+
+```bash
+# Scan by username only
+python3 profile_hound.py --username johndoe
+
+# Include email & phone metadata
+python3 profile_hound.py --email test@example.com --phone +15551234567
+
+# Full profile
+python3 profile_hound.py --username johndoe --email test@example.com --phone +15551234567 --all
+
+# Save output as JSON
+python3 profile_hound.py --username johndoe --output json
+```
+
+---
+
+## Platforms Scanned
+
+| Category     | Examples |
+|--------------|----------|
+| Social Media | Twitter, Instagram, Reddit, GitHub, TikTok |
+| Music/Forums | Last.fm, SoundCloud, DeviantArt, Steam |
+| Adult/Dating | OnlyFans, Pornhub, OKCupid, FurAffinity |
+| Fallback via Google | LinkedIn, Facebook |
 
 ---
 
 ## Output
 
-- JSON results saved to `/results/target.json`
-- Console summary if using `--output pretty`
+- `results/USERNAME.json` – all collected info
+- `--output pretty` – shows clean summary in terminal
 
 ---
 
-## Project Structure
+## Required API Keys
 
-```
-profile_hound.py               # CLI entry
-modules/
-  ├── username_scan.py         # Public profile checks
-  ├── email_scan.py            # HIBP integration
-  ├── phone_scan.py            # Numverify API
-  └── address_enrichment.py    # Placeholder for PII lookups
-results/                       # Output directory
-```
+Insert your API keys into these files:
+- `email_scan.py` → `YOUR_HIBP_API_KEY`
+- `phone_scan.py` → `YOUR_NUMVERIFY_API_KEY`
 
 ---
 
-## API Keys Required
+## Legal Disclaimer
 
-To use full features, insert your keys into:
-
-- `email_scan.py`: `YOUR_HIBP_API_KEY`
-- `phone_scan.py`: `YOUR_NUMVERIFY_API_KEY`
-
----
-
-## Legal & Ethical Notice
-
-This tool is intended for **authorized use only**. Always ensure you have permission to investigate personal data. Use responsibly and ethically.
+This tool is intended **only for authorized use**. Do not scan or investigate individuals without explicit permission. Respect privacy laws and platform terms.
 
 ---
 
 ## Coming Soon
 
-- PDF and HTML reports
-- Browser-based viewer
-- LinkedIn/Instagram/TikTok scraping via Playwright
-# profile-hound
-CLI OSINT tool for investigating usernames, phone numbers, and email addresses across the internet. It can scan social media, check breach data, validate phone numbers, and (optionally) extract profile metadata using browser automation.
+- PDF/HTML reporting
+- Screenshot mode with Playwright
+- Automatic relative discovery from public address records
