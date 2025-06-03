@@ -1,4 +1,5 @@
 import requests
+from modules.utils import search_google
 
 def run_username_scan(username):
     platforms = {
@@ -18,6 +19,7 @@ def run_username_scan(username):
     }
 
     results = {}
+
     for site, url in platforms.items():
         try:
             r = requests.get(url, timeout=5)
@@ -30,9 +32,13 @@ def run_username_scan(username):
         except:
             results[site] = {"url": url, "error": "timeout or blocked"}
 
+    google_sites = {
+        "LinkedIn": f"site:linkedin.com/in {username}",
+        "Facebook": f"site:facebook.com {username}"
+    }
+
+    for site, query in google_sites.items():
+        links = search_google(query)
+        results[site] = {"query": query, "results": links}
+
     return results
-from modules.utils import search_google
-
-google_html = search_google(f"site:linkedin.com/in {username}")
-
-
