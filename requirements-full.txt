@@ -1,0 +1,7 @@
+-r requirements.txt
+selenium
+playwright
+rich
+colorama
+pytest
+black

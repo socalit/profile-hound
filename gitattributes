@@ -1,0 +1,15 @@
+# Normalize line endings
+* text=auto
+
+# Treat shell scripts as shell
+*.sh text eol=lf linguist-language=Shell
+
+# Python files
+*.py text eol=lf
+
+# JSON and TXT
+*.json text eol=lf
+*.txt text eol=lf
+
+# Ignore results folder output
+results/* linguist-generated=true
